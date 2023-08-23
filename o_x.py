@@ -25,8 +25,6 @@ def main():
         player_two = 'x'
 
 
-    print(player_one)
-    print(player_two)
     def board_view():
         view = f'''
          {board[0]} | {board[1]} | {board[2]}
@@ -42,33 +40,51 @@ def main():
 
         for i in range (len(possibilities)):
             possibilities[i] = possibilities[i].replace(field_number, player)
+    def check_board():
+        if int in board:
+            print('remis')
+            return True 
+        else:
+            return False
+
 
 
     def check_win(player):
         check = player * 3
         for x in possibilities:
             if x == check:
+                board_view()
                 print(f"Win player {player}!")
                 return True
 
-    def choice_player():
+    def user_field_choice(player_name):
         while True:
-            player = input('Player One. Please choice "X" or "O" to play: ')
-    # player_one = input('Player One. Please choice "x" or "o" to play: ')
-    # player_two = input('Player Two. Please choice "x" or "o" to play: ')
+            try:
+                field = int(input(f'Choice your field {player_name}: '))
+            except ValueError:
+                print('Wrong data!')
+                continue
+            
+            if board[field - 1] == 'X' or board[field - 1] == 'O':
+                print('The field is occupied!')
+            else:
+                break
+        return str(field)
 
     while True:
         board_view()
-        field = input('Choice your field Player One: ')
+        field = user_field_choice('Player One')
         filing_board(player_one, field)
-        if check_win(player_one):
+        if check_win(player_one) or check_board():
             break
 
         board_view()
-        field = input('Choice your field Player Two: ')
+        field = user_field_choice('Player Two')
         filing_board(player_two, field)
-        if check_win(player_two):
+        if check_win(player_two) or check_board() :
             break
+
+    
 
 main()
         
