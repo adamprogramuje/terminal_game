@@ -72,19 +72,32 @@ def main():
                 break
         return str(field)
     
+    def game(name, player):
+        board_view()
+        field = user_field_choice(name)
+        filing_board(player, field)
+        if check_win(player) or check_board():
+            return True
+    
     def one_vs_one():
         while True:
-            board_view()
-            field = user_field_choice('Player One')
-            filing_board(player_one, field)
-            if check_win(player_one) or check_board():
+            if game('Player One', player_one):
                 break
 
-            board_view()
-            field = user_field_choice('Player Two')
-            filing_board(player_two, field)
-            if check_win(player_two) or check_board() :
+            if game('Player Two', player_two):
                 break
+
+            # board_view()
+            # field = user_field_choice('Player One')
+            # filing_board(player_one, field)
+            # if check_win(player_one) or check_board():
+            #     break
+
+            # board_view()
+            # field = user_field_choice('Player Two')
+            # filing_board(player_two, field)
+            # if check_win(player_two) or check_board() :
+            #     break
 
     if game_type == 1:
         one_vs_one()
