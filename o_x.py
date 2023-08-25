@@ -21,8 +21,10 @@ def main():
     player_one = game_question('Player One. Please choice "X" or "O" to play: ', 'x', 'o')
     if player_one == 'x':
         player_two = 'o' 
+        computer = 'o'
     else: 
         player_two = 'x'
+        computer = 'x'
 
 
     def board_view():
@@ -72,6 +74,18 @@ def main():
                 break
         return str(field)
     
+    def computer_player():
+        choice = ''
+        board_view()
+        while type(choice) != int :
+            choice = random.choice(board)
+        filing_board(computer, str(choice))
+        print('Computer choice: ', choice)
+        if check_win(computer) or check_board():
+            return True
+
+        
+    
     def game(name, player):
         board_view()
         field = user_field_choice(name)
@@ -87,20 +101,18 @@ def main():
             if game('Player Two', player_two):
                 break
 
-            # board_view()
-            # field = user_field_choice('Player One')
-            # filing_board(player_one, field)
-            # if check_win(player_one) or check_board():
-            #     break
+    def one_vs_computer():
+        while True:
+            if game('Player One', player_one):
+                break
 
-            # board_view()
-            # field = user_field_choice('Player Two')
-            # filing_board(player_two, field)
-            # if check_win(player_two) or check_board() :
-            #     break
+            if computer_player():
+                break
 
     if game_type == 1:
         one_vs_one()
+    elif game_type == 2:
+        one_vs_computer()
 
 main()
         
