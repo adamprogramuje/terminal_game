@@ -40,15 +40,16 @@ def main():
 
         for i in range (len(possibilities)):
             possibilities[i] = possibilities[i].replace(field_number, player)
+
     def check_board():
-        if int in board:
-            print('remis')
-            return True 
-        else:
-            return False
-
-
-
+        state = True
+        for i in board:
+            if type(i) == int:
+                state = False
+        if state == True:
+            print('Draw!')
+        return state    
+        
     def check_win(player):
         check = player * 3
         for x in possibilities:
@@ -70,21 +71,23 @@ def main():
             else:
                 break
         return str(field)
-
-    while True:
-        board_view()
-        field = user_field_choice('Player One')
-        filing_board(player_one, field)
-        if check_win(player_one) or check_board():
-            break
-
-        board_view()
-        field = user_field_choice('Player Two')
-        filing_board(player_two, field)
-        if check_win(player_two) or check_board() :
-            break
-
     
+    def one_vs_one():
+        while True:
+            board_view()
+            field = user_field_choice('Player One')
+            filing_board(player_one, field)
+            if check_win(player_one) or check_board():
+                break
+
+            board_view()
+            field = user_field_choice('Player Two')
+            filing_board(player_two, field)
+            if check_win(player_two) or check_board() :
+                break
+
+    if game_type == 1:
+        one_vs_one()
 
 main()
         
