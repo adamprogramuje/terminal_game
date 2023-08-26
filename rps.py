@@ -2,6 +2,7 @@
 
 import random
 
+# Possible answer options
 possibilities = ('rock', 'paper', 'scissors')
 print('Welcome to rock paper scissors game.')
 
@@ -12,6 +13,8 @@ while True:
     if not human_choice in ('rock', 'paper', 'scissors', 'q'):
         print('Wrong answer!')
         continue
+
+    # Assigning a random response for the computer
     computer_choice = random.choice(possibilities)
 
     if human_choice == 'q':
