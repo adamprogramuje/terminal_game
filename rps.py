@@ -1,21 +1,28 @@
 # Rock paper scissors
+
 import random
 
 possibilities = ('rock', 'paper', 'scissors')
+print('Welcome to rock paper scissors game.')
+
+
 
 while True:
-    human_choice = input("rock, paper, scissors (q to quit). Write your choice: ")
+    human_choice = input("\nrock, paper, scissors (q to quit). Write your choice: ")
+    if not human_choice in ('rock', 'paper', 'scissors', 'q'):
+        print('Wrong answer!')
+        continue
     computer_choice = random.choice(possibilities)
-    print(computer_choice)
+
     if human_choice == 'q':
         break
     if computer_choice == human_choice:
-        print('remis')
+        print(f'The computer chose: {computer_choice}. Result: remis')
     elif computer_choice == 'rock' and human_choice == 'paper':
-        print('You win')
+        print(f'The computer chose: {computer_choice}. Result: You win')
     elif computer_choice == 'paper' and human_choice == 'scissors':
-        print('You win')
+        print(f'The computer chose: {computer_choice}. Result: You win')
     elif computer_choice == 'scissors' and human_choice == 'rock':
-        print('You win')
+        print(f'The computer chose: {computer_choice}. Result: You win')
     else:
-        print('You lose')
+        print(f'The computer chose: {computer_choice}. Result: You lose')
