@@ -4,6 +4,7 @@ import random
 def main():    
     possibilities = ['123', '456', '789', '147', '258', '369', '159', '357']
     board = [1,2,3,4,5,6,7,8,9]
+    
     print('Welcome to Tic Tac Toe')
 
     def game_question(question, answer1, answer2):
@@ -82,9 +83,7 @@ def main():
         filing_board(computer, str(choice))
         print('Computer choice: ', choice)
         if check_win(computer) or check_board():
-            return True
-
-        
+            return True      
     
     def game(name, player):
         board_view()
