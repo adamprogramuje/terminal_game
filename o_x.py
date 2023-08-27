@@ -113,5 +113,6 @@ def main():
     elif game_type == 2:
         one_vs_computer()
 
+# Run the game
 main()
         
