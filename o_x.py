@@ -65,6 +65,9 @@ def main():
         while True:
             try:
                 field = int(input(f'Choice your field {player_name}: '))
+                if field > 9 or field < 1:
+                    print('Wrong data!')
+                    continue
             except ValueError:
                 print('Wrong data!')
                 continue
